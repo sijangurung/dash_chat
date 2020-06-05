@@ -150,11 +150,7 @@ class _MessageListViewState extends State<MessageListView> {
                       last = true;
                     }
 
-                    DateTime messageDate = DateTime(
-                      widget.messages[i].createdAt.year,
-                      widget.messages[i].createdAt.month,
-                      widget.messages[i].createdAt.day,
-                    );
+                    DateTime messageDate = widget.messages[i].createdAt;
 
                     // Needed for inverted list
                     DateTime previousDate = currentDate ?? messageDate;
@@ -163,7 +159,7 @@ class _MessageListViewState extends State<MessageListView> {
                       currentDate = messageDate;
                       showDate =
                           !widget.inverted || widget.messages.length == 1;
-                    } else if (currentDate.difference(messageDate).inDays !=
+                    } else if (currentDate.difference(messageDate).inHours !=
                         0) {
                       showDate = true;
                       currentDate = messageDate;
