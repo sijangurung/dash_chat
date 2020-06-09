@@ -132,7 +132,7 @@ class _MessageListViewState extends State<MessageListView> {
                 ListView.builder(
                   controller: widget.scrollController,
                   shrinkWrap: true,
-                  reverse: true,
+                  reverse: widget.inverted,
                   itemCount: widget.messages.length,
                   itemBuilder: (context, i) {
                     bool showAvatar = shouldShowAvatar(i);
