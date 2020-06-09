@@ -99,8 +99,15 @@ class MessageContainer extends StatelessWidget {
                     ? message.user.containerColor
                     : isUser
                         ? Theme.of(context).accentColor
-                        : Color.fromRGBO(225, 225, 225, 1),
-                borderRadius: BorderRadius.circular(5.0),
+                        : Color.fromRGBO(218, 235, 247, 1),
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(10.0),
+                  topLeft: Radius.circular(10.0),
+                  bottomRight:
+                      isUser ? Radius.circular(0.0) : Radius.circular(10.0),
+                  bottomLeft:
+                      isUser ? Radius.circular(10.0) : Radius.circular(0.0),
+                ),
               ),
         margin: EdgeInsets.only(
           bottom: 5.0,
