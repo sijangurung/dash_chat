@@ -159,9 +159,13 @@ class _MessageListViewState extends State<MessageListView> {
                         0) {
                       showDate = true;
                       currentDate = messageDate;
-                    } else if (i == widget.messages.length - 1 &&
-                        widget.inverted) {
+                      previousDate = widget
+                          .messages[
+                              (i == widget.messages.length - 1) ? i : i - 1]
+                          .createdAt;
+                    } else if (i == widget.messages.length - 1) {
                       showDate = true;
+                      previousDate = widget.messages[i].createdAt;
                     } else {
                       showDate = false;
                     }
