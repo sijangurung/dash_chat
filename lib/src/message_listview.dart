@@ -37,6 +37,7 @@ class MessageListView extends StatefulWidget {
   final double avatarMaxSize;
   final Color userContainerColor;
   final Color otherContainerColor;
+  final bool showPointedMessageContainer;
 
   MessageListView(
       {this.showLoadEarlierWidget,
@@ -76,6 +77,7 @@ class MessageListView extends StatefulWidget {
       this.textBeforeImage = true,
       this.userContainerColor,
       this.otherContainerColor,
+      this.showPointedMessageContainer,
   });
 
   @override
@@ -293,6 +295,8 @@ class _MessageListViewState extends State<MessageListView> {
                                                   widget.userContainerColor,
                                               otherContainerColor:
                                                   widget.otherContainerColor,
+                                              showPointedMessageContainer: widget
+                                                  .showPointedMessageContainer,
                                             ),
                                           ),
                                   ),

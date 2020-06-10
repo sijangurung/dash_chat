@@ -71,6 +71,10 @@ class MessageContainer extends StatelessWidget {
   /// Default to Color.fromRGBO(218, 235, 247, 1),
   final Color otherContainerColor;
 
+  /// For showing corner pointing towards the message sender
+  ///
+  /// Default container decoration is round
+  final bool showPointedMessageContainer;
 
   const MessageContainer({
     @required this.message,
@@ -88,7 +92,10 @@ class MessageContainer extends StatelessWidget {
     this.messagePadding = const EdgeInsets.all(8.0),
     this.userContainerColor,
     this.otherContainerColor,
+    this.showPointedMessageContainer,
   });
+
+  final containerRadius = const Radius.circular(10.0);
 
   @override
   Widget build(BuildContext context) {
@@ -115,12 +122,18 @@ class MessageContainer extends StatelessWidget {
                         : otherContainerColor ??
                             Color.fromRGBO(218, 235, 247, 1),
                 borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10.0),
-                  topLeft: Radius.circular(10.0),
-                  bottomRight:
-                      isUser ? Radius.circular(0.0) : Radius.circular(10.0),
-                  bottomLeft:
-                      isUser ? Radius.circular(10.0) : Radius.circular(0.0),
+                  topRight: containerRadius,
+                  topLeft: containerRadius,
+                  bottomRight: isUser
+                      ? showPointedMessageContainer
+                          ? Radius.circular(0.0)
+                          : containerRadius
+                      : containerRadius,
+                  bottomLeft: isUser
+                      ? containerRadius
+                      : showPointedMessageContainer
+                          ? Radius.circular(0.0)
+                          : containerRadius,
                 ),
               ),
         margin: EdgeInsets.only(
