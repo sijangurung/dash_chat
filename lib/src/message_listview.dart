@@ -155,17 +155,15 @@ class _MessageListViewState extends State<MessageListView> {
                       currentDate = messageDate;
                       showDate =
                           !widget.inverted || widget.messages.length == 1;
-                    } else if (currentDate.difference(messageDate).inHours !=
+                    } else if (previousDate.difference(messageDate).inHours !=
                         0) {
                       showDate = true;
-                      currentDate = messageDate;
-                      previousDate = widget
-                          .messages[
-                              (i == widget.messages.length - 1) ? i : i - 1]
-                          .createdAt;
-                    } else if (i == widget.messages.length - 1) {
+                      currentDate = widget.messages[i].createdAt;
+                      previousDate = widget.messages[i - 1].createdAt;
+                    } else if (last) {
                       showDate = true;
-                      previousDate = widget.messages[i].createdAt;
+                      currentDate = messageDate;
+                      previousDate = messageDate;
                     } else {
                       showDate = false;
                     }
